@@ -347,10 +347,13 @@ def play(deck):
 					for p in Player.players:
 						if p.team == fisher.team: # type: ignore
 							p.score += 1
+			declare_print = True
 			for card in finished:
 				if card in fisher.hand: # type: ignore
 					fisher.remove(card) # type: ignore
-					print(finished)
+					if declare_print:
+						print("You've successfully collected", *finished, "so far.")
+						declare_print = False
 		else:
 			print(f"{fishee.name} does not have the {Card.get_value(fish)} of {Card.get_suit(fish)}.") # type: ignore
 			fisher = fishee # type: ignore
